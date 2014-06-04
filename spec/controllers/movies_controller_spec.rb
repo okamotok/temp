@@ -5,9 +5,9 @@ describe "Listing similar movies ->" do
   subject { page }
   before do
     movies = [
-      {:title => 'Aladdin', :rating => 'G', :release_date => '25-Nov-1992'},
-      {:title => 'The Terminator', :rating => 'R', :release_date => '26-Oct-1984'},
-      {:title => 'When Harry Met Sally', :rating => 'R', :release_date => '21-Jul-1989'},
+      {:title => 'Aladdin', :rating => 'G', :release_date => '25-Nov-1992', :director => 'brown'},
+      {:title => 'The Terminator', :rating => 'R', :release_date => '26-Oct-1984', :director => 'cameroon'},
+      {:title => 'When Harry Met Sally', :rating => 'R', :release_date => '21-Jul-1989', :director => 'brown'},
       {:title => 'The Help', :rating => 'PG-13', :release_date => '10-Aug-2011'},
       {:title => 'Chocolat', :rating => 'PG-13', :release_date => '5-Jan-2001'},
       {:title => 'Amelie', :rating => 'R', :release_date => '25-Apr-2001'},
@@ -40,7 +40,7 @@ describe "Listing similar movies ->" do
 
       describe "the link should work ->" do
          before { click_link('Find Movies With Same Director') }
-         xit { should have_content('Movies similar to Aladdin') }
+         it { should have_content('Movies similar to Aladdin') }
       end
     end
 
