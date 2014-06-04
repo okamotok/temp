@@ -41,3 +41,9 @@ gem 'jquery-rails'
 
 # To use debugger
 gem 'haml'
+
+group :test, :development do
+  gem "pry"
+  gem "pry-nav"
+  gem "pry-stack_explorer"
+end
