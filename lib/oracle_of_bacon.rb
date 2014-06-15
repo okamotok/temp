@@ -12,7 +12,7 @@ class OracleOfBacon
 
   attr_accessor :from, :to
   attr_reader :api_key, :response, :uri
-  
+
   include ActiveModel::Validations
   validates_presence_of :from
   validates_presence_of :to
@@ -23,7 +23,7 @@ class OracleOfBacon
     # YOUR CODE HERE
   end
 
-  def initialize(api_key='')
+  def initialize(api_key='38b99ce9ec87')
     # your code here
   end
 
@@ -45,7 +45,7 @@ class OracleOfBacon
     # your code here: set the @uri attribute to properly-escaped URI
     #   constructed from the @from, @to, @api_key arguments
   end
-      
+
   class Response
     attr_reader :type, :data
     # create a Response object from a string of XML markup.
@@ -61,7 +61,7 @@ class OracleOfBacon
         parse_error_response
       # your code here: 'elsif' clauses to handle other responses
       # for responses not matching the 3 basic types, the Response
-      # object should have type 'unknown' and data 'unknown response'         
+      # object should have type 'unknown' and data 'unknown response'
       end
     end
     def parse_error_response
