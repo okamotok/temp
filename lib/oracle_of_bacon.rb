@@ -20,11 +20,13 @@ class OracleOfBacon
   validate :from_does_not_equal_to
 
   def from_does_not_equal_to
-    # YOUR CODE HERE
+    errors.add(:to, "Same actor") if @from == @to
   end
 
   def initialize(api_key='38b99ce9ec87')
-    # your code here
+    @api_key = api_key
+    @to = 'Kevin Bacon'
+    @from = 'Kevin Bacon'
   end
 
   def find_connections
@@ -59,11 +61,28 @@ class OracleOfBacon
     def parse_response
       if ! @doc.xpath('/error').empty?
         parse_error_response
-      # your code here: 'elsif' clauses to handle other responses
-      # for responses not matching the 3 basic types, the Response
-      # object should have type 'unknown' and data 'unknown response'
+      elsif !@doc.xpath('/spellcheck').empty?
+        parse_spellcheck
+      elsif !@doc.xpath('/link').empty?
+        parse_link
+      else
+        @type = :unknown
+        @data = 'unknown response type'
       end
     end
+
+    def parse_link
+      @type = :graph
+      @data = @doc.xpath('/link/actor | /link/movie').map { |node| node.text }
+
+    end
+
+    def parse_spellcheck
+      @type = :spellcheck
+      nodeset = @doc.xpath('//match')
+      @data = nodeset.map { |node| node.text }
+    end
+
     def parse_error_response
       @type = :error
       @data = 'Unauthorized access'

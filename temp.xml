@@ -1,0 +1,19 @@
+wg http://oracleofbacon.org/cgi-bin/xml\?p\=38b99ce9ec87\&a\=Kevin+Bacon\&b\=Laurence+Olivier 
+
+<?xml version="1.0" standalone="no"?>
+<link>
+  <actor>Laurence Olivier</actor>
+    <movie>The Jazz Singer (1980)</movie>
+  <actor>Janet Brandt</actor>
+    <movie>Queens Logic (1991)</movie>
+  <actor>Kevin Bacon</actor>
+</link>
+
+<?xml version="1.0" standalone="no"?>
+<spellcheck name="Anthony Perkins">
+  <match>Anthony Perkins (I)</match>
+  <match>Anthony Perkins (II)</match>
+  <match>Anthony Perkins (III)</match>
+</spellcheck>
+
+<error type="badinput">No query received</error>
