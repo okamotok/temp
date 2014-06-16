@@ -90,7 +90,7 @@ describe OracleOfBacon do
   end
 
 
-  describe 'service connection', :pending => true do
+  describe 'service connection' do
     before(:each) do
       @oob = OracleOfBacon.new
       @oob.stub(:valid?).and_return(true)

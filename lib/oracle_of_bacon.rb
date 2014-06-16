@@ -32,22 +32,24 @@ class OracleOfBacon
   def find_connections
     make_uri_from_arguments
     begin
+    # require 'pry'; binding.pry
       xml = URI.parse(uri).read
     rescue Timeout::Error, Errno::EINVAL, Errno::ECONNRESET, EOFError,
       Net::HTTPBadResponse, Net::HTTPHeaderSyntaxError,
       Net::ProtocolError => e
+      raise NetworkError
       # convert all of these into a generic OracleOfBacon::NetworkError,
       #  but keep the original error message
       # your code here
     end
-    # your code here: create the OracleOfBacon::Response object
+    Response.new(xml)
   end
 
   def make_uri_from_arguments
     base = 'http://oracleofbacon.org/cgi-bin/xml'
     key = '?p=' + CGI::escape(@api_key)
-    from = '?a=' + CGI::escape(@from)
-    to = '?b=' + CGI::escape(@to)
+    from = '&a=' + CGI::escape(@from)
+    to = '&b=' + CGI::escape(@to)
     @uri = base + key + from + to
   end
 
