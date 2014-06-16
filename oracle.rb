@@ -5,7 +5,7 @@ oob = OracleOfBacon.new('38b99ce9ec87')
 
     # connect Laurence Olivier to Kevin Bacon
     oob.from = 'Laurence Olivier'
-    # oob.find_connections
+    oob.find_connections
     # oob.response.type      # => :graph
     # oob.response.data      # => ['Kevin Bacon', 'The Big Picture (1989)', 'Eddie Albert (I)', 'Carrie (1952)', 'Laurence Olivier']
 #
